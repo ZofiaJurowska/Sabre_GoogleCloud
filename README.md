@@ -24,6 +24,7 @@ Projekt korzysta z co najmniej trzech usług Google Cloud Platform, m.in.:
 - narzędzia logowania i monitorowania.
 
 Szczegółowe relacje i powiązania pomiędzy komponentami zostaną przedstawione w diagramie C4 dołączonym do repozytorium.
+![Diagram C4 lvl2](Diagram_C4_lvl2.png)
 
 ## Observability
 
