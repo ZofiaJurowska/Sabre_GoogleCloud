@@ -5,7 +5,6 @@ from google.cloud import pubsub_v1
 import logging
 import os
 import time
-from google.protobuf.timestamp_pb2 import Timestamp
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.INFO)
