@@ -54,8 +54,9 @@ resource "google_project_service" "cloudresourcemanager" {
   project                    =  var.gcp_project_id
   service                    = "cloudresourcemanager.googleapis.com"
   disable_dependent_services = false
+  disable_on_destroy= false
 }
-#Z palca
+
 resource "google_project_service" "pubsub" {
   service = "pubsub.googleapis.com"
   depends_on = [google_project_service.cloudresourcemanager]
@@ -105,7 +106,7 @@ resource "google_cloud_run_v2_service" "default" {
   
   template {
     containers {
-      image = "us-docker.pkg.dev/cloudrun/container/hello" #"europe-central2-docker.pkg.dev/${var.gcp_project_id}/myapp-repo/myapp:latest"
+      image = "us-docker.pkg.dev/cloudrun/container/hello"  #"europe-central2-docker.pkg.dev/${var.gcp_project_id}/myapp-repo/myapp:latest" #
     }
     service_account = google_service_account.myapp_sa.email
   }
@@ -163,7 +164,3 @@ resource "google_project_iam_member" "run_service_monitoring" {
   role    = "roles/monitoring.metricWriter"
   member  = "serviceAccount:${google_service_account.myapp_sa.email}"
 }
-# output "firestore_database_name" {
-#   value       = google_firestore_database.default.name
-#   description = "The name of the Cloud Firestore database."
-# }
